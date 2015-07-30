@@ -11,11 +11,11 @@ class: middle
 name: title
 class: center
 
-# Session title
+# Docker powered team <br/> and deployment
 
-## Add speaker names here
+## David (daven) Numan
 
-Track name and URL here & anything else
+http://davenuman.github.io/
 
 ???
 Notes:
