@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+docker run --name nginx-dcb -v ${PWD}:/usr/share/nginx/html:ro -d -p 8880:80 nginx
+
