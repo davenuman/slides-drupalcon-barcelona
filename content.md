@@ -23,9 +23,16 @@ Notes:
 - For reference, see: https://github.com/gnab/remark/wiki
 
 ---
-## Main Header
+name: final
+class: inverse
+background-image: url(images/sandbox.jpg)
 
-Caption goes here
+## Sandboxes
+
+???
+Parts of a sandbox:
+ - LAMP stack
+
 
 ---
 ## Code Sample
@@ -38,6 +45,13 @@ function example_world_alter() {
   // ...
 }
 ```
+
+---
+## Final Thoughts
+
+Git has disrupted code management workflows
+
+Docker is disrupting to infrastructure and deployment
 
 ---
 name: final
