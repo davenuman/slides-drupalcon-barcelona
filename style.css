@@ -17,3 +17,5 @@ h1, h2, h3 {
 }
 .remark-code, .remark-inline-code { font-family: 'Inconsolata'; }
 .inverse { color: white; }
+.middle { padding-top: 84px; }
+.full { padding-top: 0px; }
