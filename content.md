@@ -291,8 +291,14 @@ hoist behat
 ---
 ## Jenkins
 
+### Example build step: Full test suite
+
 ```bash
-Example build step
+cd $WORKSPACE/foobar
+. bin/activate
+build
+sleep 2
+run fullsuite
 ```
 
 
