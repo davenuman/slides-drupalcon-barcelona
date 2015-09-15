@@ -16,6 +16,8 @@ class: middle
 name: title
 class: center
 
+![Docker](https://www.docker.com/sites/all/themes/docker/assets/images/logo.png)
+
 # Docker powered team <br/> and deployment
 
 ## David (daven) Numan
@@ -66,12 +68,18 @@ AWS
 ---
 ## Introducing Docker
 
+<img src="./images/Container-red.jpg"
+ style="width: 400px; float: right; margin-right: 2em;" />
+
 ### Elegant new _cross-platform\*_ development and deployment tool.
 
 \* I'll get back to this in a bit.
 
 ???
  +
+ Docker uses the shipping container as a metaphor to describe itself.
+
+ Build. Ship. Run.
 
 ---
 class: center
@@ -273,7 +281,9 @@ Optionally runs drush site install for a new project.
 
 
 ---
-## Drupal 8
+
+<img src="https://www.drupal.org/files/drupal%208%20logo%20inline%20CMYK%2072.png"
+ style="width: 300px; margin-right: 2em;" />
 
 ```bash
 hoist drupal-core-dev
@@ -286,6 +296,11 @@ hoist drupal-core-dev
 ## Behat
 ```bash
 hoist behat
+```
+
+## Codeception
+```bash
+hoist codeception
 ```
 
 ---
