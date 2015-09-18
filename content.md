@@ -219,20 +219,6 @@ Project I started with simple bash scripts which attempt to ease Drupal developm
 Inspired by the DrupalCI testbot code, but diverged with a project sandbox focus.
 
 ---
-## Bowline: command highlights
-
-- check
-- build
-- import
-- backup
-- run
-
-Overridden commands:
-- drush
-- composer
-- phpcs
-
----
 background-image: url()
 class: full
 
@@ -277,8 +263,36 @@ Optionally runs drush site install for a new project.
 ## So, What does Bowline provide?
 
 - Infrastructure as code. (via docker-compose)
-- Tools built into repo.
+- Tools and automation baked into repo.
 
+
+---
+## Typical Bowline Dev Sandbox Setup
+
+```bash
+git clone {repo url}
+
+. bin/activate
+build
+settings_init
+pull  # Custom per project
+import
+drush uli
+```
+
+---
+## Bowline: command highlights
+
+- check
+- build
+- import
+- backup
+- run
+
+Overridden commands:
+- drush
+- composer
+- phpcs
 
 ---
 
@@ -289,8 +303,10 @@ Optionally runs drush site install for a new project.
 hoist drupal-core-dev
 ```
 
+The **`hoist`** command clones the drupal repo into docroot. Ready to contribute.
+
 ???
- clones the drupal repo into docroot. ready to contribute.
+The bowline default has php 5.5 which supports Drupal 8.
 
 ---
 ## Behat
@@ -316,6 +332,10 @@ sleep 2
 run fullsuite
 ```
 
+---
+## Deploy!
+
+
 
 ---
 ## Some key challenges
@@ -326,13 +346,14 @@ run fullsuite
 
 
 ---
-# Drupal on Docker: The Alternatives
+# Drupal on Docker: Some Alternatives
 
 - Bowline plus vagrant boot2docker
 - Drude plus vagrant boot2docker
 - Official Drupal docker image
-?:
-- Kalabox (?)
+- Kalabox (now docker based)
+- Kitematic
+ - https://github.com/timbrandin/docker-drupal-kitematic
 - Docker-Machine, docker-machine-nfs (?)
 
 
