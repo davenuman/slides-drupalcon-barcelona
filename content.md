@@ -16,13 +16,23 @@ class: middle
 name: title
 class: center
 
+# Docker powered team and deployment
+
 ![Docker](https://www.docker.com/sites/all/themes/docker/assets/images/logo.png)
 
-# Docker powered team <br/> and deployment
+### David (daven) Numan
 
-## David (daven) Numan
+## http://davenuman.github.io/
 
-http://davenuman.github.io/
+---
+name: title
+class: center
+
+# David (daven) Numan
+
+![CivicActions](images/CivicActionsLogo300x250.png)
+
+https://civicactions.com/
 
 ???
 Self intro. CA 4yrs, Drupal Dev, SysAdm.
@@ -38,7 +48,7 @@ background-image: url(images/sandbox.jpg)
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 ???
-This session is mostly about developer sandboxes. (And some automated testing.)
+This session is mostly about developer sandboxes. (And some automated testing / deployment, as time allows.)
 - Parts of a sandbox:
 - Code
 - Database
@@ -66,10 +76,12 @@ AWS
 
 
 ---
-## Introducing Docker
-
 <img src="./images/Container-red.jpg"
  style="width: 400px; float: right; margin-right: 2em;" />
+
+## Introducing Docker
+
+![Docker](https://www.docker.com/sites/all/themes/docker/assets/images/logo.png)
 
 ### Elegant new _cross-platform\*_ development and deployment tool.
 
@@ -108,8 +120,10 @@ background-image: url(images/Container-ship.jpg)
 - **`docker-compose`** - "Fast, isolated development environments using Docker."
 - **`docker-machine`** - "Create and manage machines running Docker."
 - **`boot2docker`** - vagrant machine to run the docker host (engine)
+- Docker Registry (Docker Hub)
 - kitematic - OSX gui
 
+More details: https://www.docker.com/products/overview
 
 ???
  +
@@ -217,6 +231,25 @@ https://github.com/davenuman/bowline
  +
 Project I started with simple bash scripts which attempt to ease Drupal development on Docker.
 Inspired by the DrupalCI testbot code, but diverged with a project sandbox focus.
+
+---
+## Bowline Project Goals
+
+### Flexibility
+- able to support latest Drupal stack and development tools, while also allowing for old outdated sites
+
+### Quick start
+- default sandboxing should work in most cases and should be initialized with a minimal and simple configuration
+
+### Minimal requirements
+- Docker is cross platform so this project should also work ootb on all platforms.
+
+???
+Flexible: also should work with a variety of hosting platforms.
+
+Quick start: The ideal is that the developer clones the git repo and runs 'build'
+
+Minimal requirements: Docker allows us to bake everything in.
 
 ---
 background-image: url()
