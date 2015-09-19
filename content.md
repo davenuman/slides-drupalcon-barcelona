@@ -222,9 +222,9 @@ Inspired by the DrupalCI testbot code, but diverged with a project sandbox focus
 background-image: url()
 class: full
 
-## Install Bowline into your project
+## Install Bowline into your project repo
 
-#### bash <(curl -s https://raw.githubusercontent.com/davenuman/bowline/master/lib/bowline/install.sh)
+**wget 'https://raw.githubusercontent.com/davenuman/bowline/master/lib/bowline/install.sh' -O bowline-install.sh ; cat bowline-install.sh ; read -n1 -p "Run above script? (y/n)" ; if [ "$REPLY" = "y" ]; then bash bowline-install.sh; fi**
 
 ```bash
 [...]
@@ -375,7 +375,7 @@ Docker hosting in production... TODO
 
 Git has revolutionized code management and allowed for new work-flows
 
-Docker is revolutionizing the was we do infrastructure and deployment
+Docker is revolutionizing the way we do infrastructure and deployment
 
 ???
  +
