@@ -419,6 +419,13 @@ Reality is many production hosting varieties. (AWS, Acquia, Pantheon, etc)
 
 Bowline tried to stay out of the way of production hosting.
 
+---
+background-image: url(images/jam-session.jpg)
+
+???
+
+Seamless prod deployment, switching live.
+
 
 ---
 ## Some key challenges
