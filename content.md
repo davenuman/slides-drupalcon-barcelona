@@ -363,6 +363,10 @@ Overridden commands:
 - composer
 - phpcs
 
+???
+
+Bowline is basically a collection of small single purpose commands which do things in docker containers.
+
 ---
 
 <img src="https://www.drupal.org/files/drupal%208%20logo%20inline%20CMYK%2072.png"
@@ -407,36 +411,23 @@ Who is familiar with Jenkins? (basically a super advanced task runner.)
 
 This snippet is from one of our project's Jenkins builds.
 
+We actually run the import in a separate Jenkins build on this project to reduce the time it takes to run the tests. Trade-off of time and accuracy.
 
 ---
-## Deploy to production!
-
-???
-
-Ideally exactly the same process as the dev and test server.
-
-Reality is many production hosting varieties. (AWS, Acquia, Pantheon, etc)
-
-Bowline tried to stay out of the way of production hosting.
-
----
-background-image: url(images/jam-session.jpg)
-
-???
-
-Seamless prod deployment, switching live.
-
-
----
-## Some key challenges
+## Some key sandbox challenges
 
 - File permissions
 - Docker api versions
 - File sync
 
+???
+
+ - File perms solved in bowline's docker entry point.
+ - different api's can be painful
+ - file sync...
 
 ---
-## Drupal on Docker: Some Alternatives
+## Drupal Sandboxes on Docker: Some Alternatives
 
 - Bowline plus vagrant boot2docker
 - Drude plus vagrant boot2docker
@@ -457,23 +448,44 @@ Seamless prod deployment, switching live.
 Asked by co-workers what they like about bowline.
 The third response most significant. --support for your system of choice.
 
+
+---
+## Deploy to production!
+
+???
+
+Ideally exactly the same process as the dev and test server.
+
+Reality is many production hosting varieties. (AWS, Acquia, Pantheon, etc)
+
+Bowline tried to stay out of the way of production hosting.
+
+---
+background-image: url(images/jam-session.jpg)
+
+???
+
+Seamless prod deployment, switching live.
+
 ---
 # Ideas
 
-Avoid the resource strain of a Vagrant VM:  Cloud dev
-Local headless device on your network instead of vagrant.
+Avoid the resource strain of a Vagrant VM:
+ - Cloud dev
+ - Local headless device on your network instead of vagrant.
 
-Syncthing
+Syncthing instead of NFS?
 
 Docker hosting in production... ?
-
-~ Immutable infrastructure--
+ - Immutable infrastructure
+ - Security and compliance
 
 ???
  We are currently working on a server hosted bowline-docker dev environment. Will require a decent network connection -- cafe might not work well.
  Main challenge is the file syncing.
 
 Production hosting. BoF?
+
 
 ---
 class: center
@@ -488,7 +500,7 @@ class: center
  +
 GitHub fork and Pull Request a prime example.
 
-Docker perhaps easing Immutable Infrastructure? Perhaps in ways we haven't discovered yet.
+Docker perhaps easing continuous delivery? Perhaps in ways we haven't discovered yet.
 
 
 
@@ -505,6 +517,9 @@ class: center
 
 # Questions?
 
+???
+
+Thanks-you's
 
 ---
 name: final
