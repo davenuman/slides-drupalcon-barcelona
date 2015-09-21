@@ -93,6 +93,8 @@ AWS
 
  Build. Ship. Run.
 
+ Common experience for dev, and deployment.
+
 ---
 class: center
 ## Docker Containers
@@ -105,23 +107,28 @@ class: center
 ???
  +
 
+Left side: typical virtual machine
+
+Right side: docker containers. Uses the running kernel.
+
 ---
 background-image: url(images/Container-ship.jpg)
 
 ???
  +
  Docker is quite efficient at running many containers in one host machine.
+ - compared to virtual machine, can host hundreds of containers.
 
 ---
 ## The Docker Components
 
 - Docker Engine - Hosts the containers
 - **`docker`**  - "A self-sufficient runtime for containers."
+- **`boot2docker`** - vagrant machine to run the docker host (engine)
 - **`docker-compose`** - "Fast, isolated development environments using Docker."
 - **`docker-machine`** - "Create and manage machines running Docker."
-- **`boot2docker`** - vagrant machine to run the docker host (engine)
-- Docker Registry (Docker Hub)
 - kitematic - OSX gui
+- Docker Registry (Docker Hub)
 
 More details: https://www.docker.com/products/overview
 
@@ -129,8 +136,12 @@ More details: https://www.docker.com/products/overview
  +
 - Engine
 - docker - command to build, run, stop, list, ... containers
+- b2d - vagrant VM which runs docker engine
 - compose - yaml config files
-- machine -
+- machine - replaces the boot2docker cli. can connect to vagrant, or cloud
+- kitematic - gui (windows too?) havne't tried yet.
+- Registry - sharing docker images. Hub - much like github
+
 
 ---
 class: center
@@ -139,6 +150,8 @@ class: center
 
 ???
  +
+ A container is a running instance of a docker image.
+
  Can be complex and large, similar to a virtual machine.
  Much better to be a simple service, even as small as a single process.
 
@@ -156,6 +169,7 @@ class: full
 background-image: url()
 ### Example docker-compose.yml file
 
+.smallcode[
 ```yaml
 db:
   image: mariadb:10.0
@@ -178,6 +192,10 @@ web:
   volumes_from:
     - php
 ```
+]
+
+???
+Compose is helpful for understanding docker.
 
 ---
 background-image: url(images/docker-friends.png)
@@ -205,12 +223,15 @@ This is my perception of Mac user's experience of Docker.
 The official boot2docker is very slow for Drupal.
 vboxfs
 
+Also, docker is imho the best "Write once, run anywhere" technology available.
+But we really mean in Linux only.
+
 ---
 class: center
 ## Vagrant Boot2Docker
 ### (Thanks Leonid!)
 
-https://github.com/blinkreaction/boot2docker-vagrant
+### https://github.com/blinkreaction/boot2docker-vagrant
 
 ???
  +
@@ -218,6 +239,10 @@ Hope for OSX and Windows users.
 We use this for all our non-Linux users.
 
 "Those who don't run Linux are doomed to virtualize it."
+
+...
+
+So, we have docker for all our developers, now what. How do we get Drupal on there?
 
 ---
 class: center
@@ -229,19 +254,22 @@ https://github.com/davenuman/bowline
 
 ???
  +
-Project I started with simple bash scripts which attempt to ease Drupal development on Docker.
+Project I started with simple bash scripts which attempt to ease Drupal project development on Docker.
+
 Inspired by the DrupalCI testbot code, but diverged with a project sandbox focus.
 
----
-## Bowline Project Goals
+8 contributors.  -- and we hired one of them :)
 
-### Flexibility
+---
+### Bowline Project Goals
+
+#### Flexibility
 - able to support latest Drupal stack and development tools, while also allowing for old outdated sites
 
-### Quick start
+#### Quick start
 - default sandboxing should work in most cases and should be initialized with a minimal and simple configuration
 
-### Minimal requirements
+#### Minimal requirements
 - Docker is cross platform so this project should also work ootb on all platforms.
 
 ???
@@ -249,7 +277,7 @@ Flexible: also should work with a variety of hosting platforms.
 
 Quick start: The ideal is that the developer clones the git repo and runs 'build'
 
-Minimal requirements: Docker allows us to bake everything in.
+Minimal requirements: Docker allows us to bake everything in. non-linux requirements handled by vagrant.
 
 ---
 background-image: url()
@@ -259,6 +287,7 @@ class: full
 
 **wget 'https://raw.githubusercontent.com/davenuman/bowline/master/lib/bowline/install.sh' -O bowline-install.sh ; cat bowline-install.sh ; read -n1 -p "Run above script? (y/n)" ; if [ "$REPLY" = "y" ]; then bash bowline-install.sh; fi**
 
+.smallcode[
 ```bash
 [...]
  create mode 100644 lib/rigging/drupal-core-dev/drupal-core-dev.hoist
@@ -281,8 +310,11 @@ web  ~  172.17.0.8  http://172.17.0.8/
 
 Would you like to initialize the Drupal settings file? [Y/n]
 ```
+]
 
 ???
+"Baking it in"
+
 This script adds the bowline repository as a remote.
 It then checks out the bowline code into your project and commits it. (Push it if you like it.)
 At this point bowline is installed.
@@ -298,6 +330,10 @@ Optionally runs drush site install for a new project.
 - Infrastructure as code. (via docker-compose)
 - Tools and automation baked into repo.
 
+???
+
+- Infrastructure as code
+- Tools and automation baked into repo.
 
 ---
 ## Typical Bowline Dev Sandbox Setup
@@ -365,9 +401,23 @@ sleep 2
 run fullsuite
 ```
 
----
-## Deploy!
+???
 
+Who is familiar with Jenkins? (basically a super advanced task runner.)
+
+This snippet is from one of our project's Jenkins builds.
+
+
+---
+## Deploy to production!
+
+???
+
+Ideally exactly the same process as the dev and test server.
+
+Reality is many production hosting varieties. (AWS, Acquia, Pantheon, etc)
+
+Bowline tried to stay out of the way of production hosting.
 
 
 ---
@@ -379,7 +429,7 @@ run fullsuite
 
 
 ---
-# Drupal on Docker: Some Alternatives
+## Drupal on Docker: Some Alternatives
 
 - Bowline plus vagrant boot2docker
 - Drude plus vagrant boot2docker
@@ -389,6 +439,16 @@ run fullsuite
  - https://github.com/timbrandin/docker-drupal-kitematic
 - Docker-Machine, docker-machine-nfs (?)
 
+---
+## "What do you love about Bowline?"
+
+- Easy to use once installed
+- Provides framework for pull, import, drush, behat, other commands that makes working with dockerized code easier
+- I love that bowline comes with a Daven attached to the other end of the line.
+
+???
+Asked by co-workers what they like about bowline.
+The third response most significant. --support for your system of choice.
 
 ---
 # Ideas
@@ -396,25 +456,42 @@ run fullsuite
 Avoid the resource strain of a Vagrant VM:  Cloud dev
 Local headless device on your network instead of vagrant.
 
-Docker hosting in production... TODO
+Syncthing
+
+Docker hosting in production... ?
+
 ~ Immutable infrastructure--
 
 ???
  We are currently working on a server hosted bowline-docker dev environment. Will require a decent network connection -- cafe might not work well.
  Main challenge is the file syncing.
 
+Production hosting. BoF?
+
 ---
+class: center
+
 ## Final Thoughts
 
-Git has revolutionized code management and allowed for new work-flows
+### **Git** has revolutionized code management and allowed for new work-flows
 
-Docker is revolutionizing the way we do infrastructure and deployment
+### **Docker** is revolutionizing the way we do infrastructure and deployment
 
 ???
  +
 GitHub fork and Pull Request a prime example.
 
 Docker perhaps easing Immutable Infrastructure? Perhaps in ways we haven't discovered yet.
+
+
+
+---
+background-image: url(images/docker-friends.png)
+
+???
+
++
+ Docker is fun
 
 ---
 class: center
